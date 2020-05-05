@@ -57,6 +57,14 @@
                             @endforeach
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.event.fields.timezone') }}
+                        </th>
+                        <td>
+                            {{ $event->timezone }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

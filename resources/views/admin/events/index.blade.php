@@ -38,6 +38,9 @@
                             {{ trans('cruds.event.fields.registrants') }}
                         </th>
                         <th>
+                            {{ trans('cruds.event.fields.timezone') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -64,6 +67,9 @@
                                 @foreach($event->registrants as $key => $item)
                                     <span class="badge badge-info">{{ $item->name }}</span>
                                 @endforeach
+                            </td>
+                            <td>
+                                {{ $event->timezone ?? '' }}
                             </td>
                             <td>
                                 @can('event_show')

@@ -59,6 +59,20 @@
                 <span class="help-block">{{ trans('cruds.event.fields.registrants_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="timezone">{{ trans('cruds.event.fields.timezone') }}</label>
+                <select class="form-control select2 {{ $errors->has('timezone') ? 'is-invalid' : '' }}" name="timezone" id="timezone">
+                    @foreach(DateTimeZone::listIdentifiers(DateTimeZone::ALL) as $timezone)
+                        <option {{ old('timezone', $event->timezone ?? 'Europe/Vilnius') == $timezone ? 'selected' : '' }}>{{ $timezone }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('timezone'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('timezone') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.event.fields.timezone_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

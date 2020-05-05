@@ -24,6 +24,7 @@ class Event extends Model
         'title',
         'description',
         'start_time',
+        'timezone',
         'created_at',
         'updated_at',
         'deleted_at',

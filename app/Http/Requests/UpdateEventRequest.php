@@ -21,14 +21,21 @@ class UpdateEventRequest extends FormRequest
     {
         return [
             'title'         => [
-                'required'],
+                'required'
+            ],
             'start_time'    => [
                 'required',
-                'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format')],
+                'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format')
+            ],
             'registrants.*' => [
-                'integer'],
+                'integer'
+            ],
             'registrants'   => [
-                'array'],
+                'array'
+            ],
+            'timezone'   => [
+                'timezone'
+            ],
         ];
 
     }

@@ -79,6 +79,8 @@ return [
             'start_time_helper'  => '',
             'registrants'        => 'Registrants',
             'registrants_helper' => '',
+            'timezone'           => 'Timezone',
+            'timezone_helper'    => '',
             'created_at'         => 'Created at',
             'created_at_helper'  => '',
             'updated_at'         => 'Updated at',
