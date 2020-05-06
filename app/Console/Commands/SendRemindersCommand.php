@@ -40,19 +40,27 @@ class SendRemindersCommand extends Command
      */
     public function handle()
     {
+        $count = 0;
         $times = [
-            now(),
-            now()->addHour()
+            now('Europe/London')->subDay(),
+            now('Europe/London')->addDay()
         ];
         $events = Event::with('registrants')
             ->whereHas('registrants')
             ->whereBetween('start_time', $times)
             ->get();
 
+
         foreach ($events as $event) {
-            Notification::send($event->registrants, new EventReminderNotification($event));
+            if (
+                now($event->timezone)->diffInMinutes($event->start_time, false) > 0 &&
+                now($event->timezone)->diffInMinutes($event->start_time, false) <= 60
+            ) {
+                Notification::send($event->registrants, new EventReminderNotification($event));
+                $count++;
+            }
         }
 
-        $this->info("Event reminders of " . $events->count() . " events has been sent successfully");
+        $this->info("Event reminders of " . $count . " events has been sent successfully");
     }
 }

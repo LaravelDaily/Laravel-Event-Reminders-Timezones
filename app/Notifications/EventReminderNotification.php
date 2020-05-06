@@ -48,6 +48,6 @@ class EventReminderNotification extends Notification
                     ->line('An event is scheduled for you in less than an hour')
                     ->line('Title: ' . $this->event->title)
                     ->line('Description: ' . $this->event->description)
-                    ->line('Start Time: ' . $this->event->start_time);
+                    ->line('Start Time: ' . $this->event->start_time . ' (' . $this->event->timezone . ')');
     }
 }
