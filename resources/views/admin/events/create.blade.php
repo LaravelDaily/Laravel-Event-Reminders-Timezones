@@ -60,8 +60,8 @@
             <div class="form-group">
                 <label for="timezone">{{ trans('cruds.event.fields.timezone') }}</label>
                 <select class="form-control select2 {{ $errors->has('timezone') ? 'is-invalid' : '' }}" name="timezone" id="timezone">
-                    @foreach(DateTimeZone::listIdentifiers(DateTimeZone::ALL) as $timezone)
-                        <option {{ old('timezone', 'Europe/Vilnius') == $timezone ? 'selected' : '' }}>{{ $timezone }}</option>
+                    @foreach(timezone_identifiers_list() as $timezone)
+                        <option {{ old('timezone', 'Europe/London') == $timezone ? 'selected' : '' }}>{{ $timezone }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('timezone'))
