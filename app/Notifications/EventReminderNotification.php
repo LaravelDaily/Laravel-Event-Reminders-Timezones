@@ -12,14 +12,15 @@ class EventReminderNotification extends Notification
 {
     use Queueable;
 
-    private Event $event;
+    private $event;
 
     /**
      * Create a new notification instance.
      *
+     * @param $event
      * @return void
      */
-    public function __construct(Event $event)
+    public function __construct($event)
     {
         $this->event = $event;
     }
@@ -39,7 +40,7 @@ class EventReminderNotification extends Notification
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
     public function toMail($notifiable)
     {
